@@ -13,26 +13,25 @@ import android.widget.Toast;
 import com.example.rodak.mobilelibrary.data.BookContract.BookEntry;
 import com.example.rodak.mobilelibrary.data.BookDbHelper;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
 
     private BookDbHelper mDbHelper;
 
-    private EditText mBookEditText;
-    private EditText mPriceEditText;
-    private EditText mQuantityEditText;
-    private EditText mSupplierEditText;
-    private EditText mPhoneEditText;
+    private @BindView(R.id.edit_book_name) EditText mBookEditText;
+    private @BindView(R.id.edit_book_price) EditText mPriceEditText;
+    private @BindView(R.id.edit_book_quantity) EditText mQuantityEditText;
+    private @BindView(R.id.edit_supplier_name) EditText mSupplierEditText;
+    private @BindView(R.id.edit_supplier_phone) EditText mPhoneEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mBookEditText = (EditText) findViewById(R.id.edit_book_name);
-        mPriceEditText = (EditText) findViewById(R.id.edit_book_price);
-        mQuantityEditText = (EditText) findViewById(R.id.edit_book_quantity);
-        mSupplierEditText = (EditText) findViewById(R.id.edit_supplier_name);
-        mPhoneEditText = (EditText) findViewById(R.id.edit_supplier_phone);
+        ButterKnife.bind(this);
 
         mDbHelper = new BookDbHelper(this);
         displayDatabaseInfo();
