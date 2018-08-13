@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/activity_margin"
+    tools:context=".EditorActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/container_book_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/TextStyle"
+                android:text="@string/book_name" />
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingLeft="4dp">
+
+                <EditText
+                    android:id="@+id/edit_book_name"
+                    style="@style/EditTextStyle"
+                    android:hint="@string/book_name_hint"
+                    android:inputType="textCapSentences" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/container_book_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/TextStyle"
+                android:text="@string/book_price" />
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingLeft="@dimen/dp_4">
+
+                <EditText
+                    android:id="@+id/edit_book_price"
+                    style="@style/EditTextStyle"
+                    android:hint="@string/book_price_hint"
+                    android:inputType="phone" />
+
+                <TextView
+                    android:id="@+id/label_price_currency"
+                    style="@style/EditTextCurrency"
+                    android:text="@string/price_currency" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/container_book_quantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/TextStyle"
+                android:text="@string/book_quantity" />
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingLeft="@dimen/dp_4">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/button_minus"
+                        style="@style/BtnMin"
+                        android:onClick="decrement"
+                        android:text="@string/minus" />
+
+                    <TextView
+                        android:id="@+id/edit_quantity_text_view"
+                        style="@style/QuantityBookEdit"
+                        android:hint="0" />
+
+                    <Button
+                        android:id="@+id/button_plus"
+                        style="@style/BtnPlus"
+                        android:onClick="increment"
+                        android:text="@string/plus" />
+                </LinearLayout>
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/container_supplier_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/TextStyle"
+                android:text="@string/supplier_name" />
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingLeft="@dimen/dp_4">
+
+                <EditText
+                    android:id="@+id/edit_supplier_name"
+                    style="@style/EditTextStyle"
+                    android:hint="@string/supplier_name_hint"
+                    android:inputType="textCapSentences" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/container_supplier_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/TextStyle"
+                android:text="@string/supplier_phone" />
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingLeft="@dimen/dp_4">
+
+                <EditText
+                    android:id="@+id/edit_supplier_phone"
+                    style="@style/EditTextStyle"
+                    android:hint="@string/supplier_phone_hint"
+                    android:inputType="phone" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/submit_button"
+            style="@style/BtnStyle"
+            android:onClick="insertBook"
+            android:text="@string/submit_button" />
+
+        <TextView
+            android:id="@+id/table_rows_count"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

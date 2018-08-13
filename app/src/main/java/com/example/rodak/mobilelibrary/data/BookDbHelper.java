@@ -8,8 +8,6 @@ import com.example.rodak.mobilelibrary.data.BookContract.BookEntry;
 
 public class BookDbHelper extends SQLiteOpenHelper {
 
-    public static final String LOG_TAG = BookDbHelper.class.getSimpleName();
-
     private static final String DATABASE_NAME = "library.db";
 
     private static final int DATABASE_VERSION = 1;

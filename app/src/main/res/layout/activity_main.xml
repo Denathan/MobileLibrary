@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,145 +8,43 @@
     android:padding="@dimen/activity_margin"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:id="@+id/container_book_name"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        tools:context=".CatalogActivity">
 
-        <TextView
-            style="@style/TextStyle"
-            android:text="@string/book_name" />
+        <ListView
+            android:id="@+id/list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-        <RelativeLayout
-            android:layout_width="0dp"
+        <LinearLayout
+            android:id="@+id/empty_view"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:paddingLeft="4dp">
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/edit_book_name"
-                style="@style/EditTextStyle"
-                android:hint="@string/book_name_hint"
-                android:inputType="textCapSentences" />
-
-        </RelativeLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/container_book_price"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            style="@style/TextStyle"
-            android:text="@string/book_price" />
-
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:paddingLeft="@dimen/dp4">
-
-            <EditText
-                android:id="@+id/edit_book_price"
-                style="@style/EditTextStyle"
-                android:hint="@string/book_price_hint"
-                android:inputType="phone" />
+            <ImageView
+                android:id="@+id/empty_list_image"
+                style="@style/EmptyImage"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/no_item" />
 
             <TextView
-                android:id="@+id/label_price_currency"
-                style="@style/EditTextCurrency"
-                android:text="@string/price_currency" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="There's nothing there. Add a new book." />
 
-        </RelativeLayout>
-    </LinearLayout>
+        </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/container_book_quantity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            style="@style/FabBtn"
+            android:src="@drawable/ic_action_add"
+            app:backgroundTint="@color/colorPrimary" />
 
-        <TextView
-            style="@style/TextStyle"
-            android:text="@string/book_quantity" />
-
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:paddingLeft="@dimen/dp4">
-
-            <EditText
-                android:id="@+id/edit_book_quantity"
-                style="@style/EditTextStyle"
-                android:hint="@string/book_quantity_hint"
-                android:inputType="number" />
-
-        </RelativeLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/container_supplier_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            style="@style/TextStyle"
-            android:text="@string/supplier_name" />
-
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:paddingLeft="@dimen/dp4">
-
-            <EditText
-                android:id="@+id/edit_supplier_name"
-                style="@style/EditTextStyle"
-                android:hint="@string/supplier_name_hint"
-                android:inputType="textCapSentences" />
-
-        </RelativeLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/container_supplier_phone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            style="@style/TextStyle"
-            android:text="@string/supplier_phone" />
-
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:paddingLeft="@dimen/dp4">
-
-            <EditText
-                android:id="@+id/edit_supplier_phone"
-                style="@style/EditTextStyle"
-                android:hint="@string/supplier_phone_hint"
-                android:inputType="phone" />
-
-        </RelativeLayout>
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/submit_button"
-        style="@style/ButtonStyle"
-        android:onClick="submitButton"
-        android:text="@string/submit_button" />
-
-    <TextView
-        android:id="@+id/table_rows_count"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-</LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>
