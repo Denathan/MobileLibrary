@@ -221,7 +221,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             return false;
         } else {
             if (!supplierPhoneString.matches(validNumber)) {
-                Toast.makeText(this, getString(R.string.app_name), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.supplier_phone_incorrect), Toast.LENGTH_SHORT).show();
                 return false;
             }
         }
