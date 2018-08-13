@@ -14,6 +14,7 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.PhoneNumberUtils;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -172,6 +173,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     }
 
     private boolean saveBook() {
+        String validNumber = "^[+]?[0-9]{8,15}$";
 
         String nameString = nameEditText.getText().toString().trim();
         String priceString = priceEditText.getText().toString().trim();
@@ -201,28 +203,30 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             Toast.makeText(this, getString(R.string.book_price_req), Toast.LENGTH_SHORT).show();
             return false;
         }
-
         values.put(BookEntry.COLUMN_BOOK_PRICE, priceString);
-
-        if (TextUtils.isEmpty(supplierNameString)) {
-            Toast.makeText(this, getString(R.string.supplier_name_req), Toast.LENGTH_SHORT).show();
-            return false;
-        }
-
-        values.put(BookEntry.COLUMN_SUPPLIER_NAME, supplierNameString);
-
-        if (TextUtils.isEmpty(supplierPhoneString)) {
-            Toast.makeText(this, getString(R.string.supplier_phone_req), Toast.LENGTH_SHORT).show();
-            return false;
-        }
-
-        values.put(BookEntry.COLUMN_SUPPLIER_PHONE, supplierPhoneString);
 
         if (TextUtils.isEmpty(quantityString)) {
             Toast.makeText(this, getString(R.string.book_quantity_req), Toast.LENGTH_SHORT).show();
             return false;
         }
         values.put(BookEntry.COLUMN_BOOK_QUANTITY, quantityString);
+
+        if (TextUtils.isEmpty(supplierNameString)) {
+            Toast.makeText(this, getString(R.string.supplier_name_req), Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        values.put(BookEntry.COLUMN_SUPPLIER_NAME, supplierNameString);
+        if (TextUtils.isEmpty(supplierPhoneString)) {
+            Toast.makeText(this, getString(R.string.supplier_phone_req), Toast.LENGTH_SHORT).show();
+            return false;
+        } else {
+            if (!supplierPhoneString.matches(validNumber)) {
+                Toast.makeText(this, getString(R.string.app_name), Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+        values.put(BookEntry.COLUMN_SUPPLIER_PHONE, supplierPhoneString);
+
 
         if (currentBookUri == null) {
 
