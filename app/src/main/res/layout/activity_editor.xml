@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
     android:padding="@dimen/activity_margin"
     tools:context=".EditorActivity">
 
@@ -164,6 +166,12 @@
             style="@style/BtnStyle"
             android:onClick="insertBook"
             android:text="@string/submit_button" />
+
+        <Button
+            android:id="@+id/call_supplier_button"
+            style="@style/BtnCallSupplier"
+            android:onClick="callSupplier"
+            android:text="@string/call_supplier" />
 
         <TextView
             android:id="@+id/table_rows_count"

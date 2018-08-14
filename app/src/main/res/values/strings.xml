@@ -49,4 +49,5 @@
     <string name="no_less_quantity">Quantity must be positive!</string>
     <string name="buy_now">BUY\nNOW!</string>
     <string name="supplier_phone_incorrect">You need to put real phone number.</string>
+    <string name="call_supplier">Call a\nsupplier</string>
 </resources>

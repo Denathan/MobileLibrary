@@ -54,6 +54,8 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     Button minusButton;
     @BindView(R.id.submit_button)
     Button insertBook;
+    @BindView(R.id.call_supplier_button)
+    Button callSupplier;
 
     private boolean bookHasChanged = false;
 
@@ -80,6 +82,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             supplierName.setEnabled(true);
             invalidateOptionsMenu();
         } else {
+            callSupplier.setVisibility(View.VISIBLE);
             setTitle(getString(R.string.edit_book_title));
             supplierName.setEnabled(false);
             getSupportLoaderManager().initLoader(EXISTING_BOOK_LOADER, null, this);
@@ -193,7 +196,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
         if (TextUtils.isEmpty(nameString)) {
             Toast.makeText(this, getString(R.string.book_name_req), Toast.LENGTH_SHORT).show();
-            return true;
+            return false;
         }
 
         ContentValues values = new ContentValues();
@@ -229,7 +232,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
 
         if (currentBookUri == null) {
-
             Uri newUri = getContentResolver().insert(BookEntry.CONTENT_URI, values);
             if (newUri == null) {
                 Toast.makeText(this, getString(R.string.error_saving_book),
@@ -325,6 +327,15 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             supplierName.setText(sName);
             supplierPhone.setText(sPhone);
             quantityTextView.setText(Integer.toString(quantity));
+        }
+    }
+
+    public void callSupplier(View view) {
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel:" + supplierPhone.getText().toString()));
+
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
         }
     }
 
